@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reduced_libft.h"
+#include "ft_printf.h"
 
 /* DESCRIPTION:
 The strlen() function calculates the length of the string pointed

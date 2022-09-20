@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reduced_libft.h"
+#include "ft_printf.h"
 
 /* DESCRIPTION:
 Outputs the char c to the file descriptor fd.
+The function returns the number of characters printed.
 ---------------------------------------------------------------------------- */
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(int c, int fd)
 {
 	write(fd, &c, 1);
+	return (1);
 }

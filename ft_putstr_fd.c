@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reduced_libft.h"
+#include "ft_printf.h"
 
 /* DESCRIPTION:
 Outputs the string s to the file descriptor fd.
+The function returns the number of characters printed.
 ---------------------------------------------------------------------------- */
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (*(s + i))
 		ft_putchar_fd(*(s + i++), fd);
+	return (i);
 }

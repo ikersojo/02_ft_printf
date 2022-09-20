@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 15:24:36 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/09 15:24:36 by isojo-go         ###   ########.fr       */
+/*   Created: 2022/09/09 15:22:28 by isojo-go          #+#    #+#             */
+/*   Updated: 2022/09/09 15:22:28 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reduced_libft.h"
+#include "ft_printf.h"
 
 /* DESCRIPTION:
-Outputs the string s to the file descriptor fd followed by a ’\n’.
+The memcpy() function copies n bytes from memory area "src" to memory area
+"dst", and returns a pointer to "dst". The memory areas must not overlap.
+Use memmove() if the momery areas do overlap.
 ---------------------------------------------------------------------------- */
-void	ft_putendl_fd(char *s, int fd)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
+
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		*d++ = *s++;
+		i++;
+	}
+	return (dst);
 }

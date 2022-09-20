@@ -6,11 +6,11 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:20:53 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/17 11:47:35 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/09/18 11:31:19 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reduced_libft.h"
+#include "ft_printf.h"
 
 static int	ft_digitcount(int n)
 {
