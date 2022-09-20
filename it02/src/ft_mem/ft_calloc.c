@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 The calloc() function contiguously allocates enough space for "count" objects

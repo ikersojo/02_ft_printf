@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 Outputs the string s to the file descriptor fd followed by a ’\n’.

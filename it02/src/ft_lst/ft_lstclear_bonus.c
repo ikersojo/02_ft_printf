@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 Takes as a parameter a pointer to an element of a list, deletes and frees the

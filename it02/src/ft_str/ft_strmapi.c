@@ -6,11 +6,11 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:40 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/20 13:09:47 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:52:32 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 Applies the function f to each character of the string s passed as argument by

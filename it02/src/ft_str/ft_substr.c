@@ -6,11 +6,11 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:27:47 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/20 13:14:58 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:52:32 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 Allocates (with malloc) and returns a new substring from the string s. The

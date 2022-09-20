@@ -6,12 +6,139 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 11:54:28 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/20 09:35:30 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:46:53 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h> // DEBUG
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <limits.h>
+
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (n * -1);
+	return (n);
+}
+
+int	ft_putchar_fd(int c, int fd)
+{
+	return (write(fd, &c, 1));
+}
+
+int	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (s == NULL)
+		return (write(fd, "(null)", 6));
+	while (*s)
+		i += ft_putchar_fd(*s++, fd);
+	return (i);
+}
+
+int ft_digitcount(unsigned long n, int base)
+{
+	int	i;
+
+	if (n == 0)
+		return (1);
+	i = 0;
+	while (n > 0)
+	{
+		i++;
+		n = n / base;
+	}
+	return (i);
+}
+
+int	ft_putnbr_fd(int n, int fd)
+{
+	int	i;
+
+	if (n < 0)
+		ft_putchar_fd('-', fd);
+	if (ft_abs(n) >= 0 && ft_abs(n) <= 9)
+		ft_putchar_fd(ft_abs(n) + '0', fd);
+	else
+	{
+		ft_putnbr_fd(ft_abs(n / 10), fd);
+		ft_putnbr_fd(ft_abs(n % 10), fd);
+	}
+	if (n == -2147483648)
+		return (11);
+	i = ft_digitcount(ft_abs(n), 10);
+	if (n < 0)
+		i++;
+	return (i);
+}
+
+int	ft_putunbr_fd(unsigned int n, int fd)
+{
+	if (n >= 0 && n <= 9)
+		ft_putchar_fd(n + '0', fd);
+	else
+	{
+		ft_putunbr_fd(n / 10, fd);
+		ft_putunbr_fd(n % 10, fd);
+	}
+	return (ft_digitcount(n, 10));
+}
+
+int	ft_putuhexnbr_fd(unsigned int n, int fd, char cs)
+{
+	if (n >= 0 && n <= 9)
+		ft_putchar_fd(n + '0', fd);
+	else if (n >= 10 && n <= 15)
+	{
+		if (cs == 'X')
+			ft_putchar_fd(n - 10 + 'A', fd);
+		else
+			ft_putchar_fd(n - 10 + 'a', fd);
+	}
+	else
+	{
+		ft_putuhexnbr_fd(n / 16, fd, cs);
+		ft_putuhexnbr_fd(n % 16, fd, cs);
+	}
+	return (ft_digitcount(n, 16));
+}
+
+int	ft_putuhexlongnbr_fd(unsigned long n, int fd, char cs)
+{
+	if (n >= 0 && n <= 9)
+		ft_putchar_fd(n + '0', fd);
+	else if (n >= 10 && n <= 15)
+	{
+		if (cs == 'X')
+			ft_putchar_fd(n - 10 + 'A', fd);
+		else
+			ft_putchar_fd(n - 10 + 'a', fd);
+	}
+	else
+	{
+		ft_putuhexlongnbr_fd(n / 16, fd, cs);
+		ft_putuhexlongnbr_fd(n % 16, fd, cs);
+	}
+	return (ft_digitcount(n, 16));
+}
+
+int	ft_putptr_fd(uintptr_t n, int fd)
+{
+	int	i;
+
+	i = 0;
+	i += ft_putstr_fd("0x", fd);
+	if (n == 0)
+		i += ft_putchar_fd('0', fd);
+	else
+		i += ft_putuhexlongnbr_fd(n, fd, 'x');
+	return (i);
+}
 
 //conversion specifier "cs"
 static int	conv_sel(va_list ap, char cs)
@@ -23,18 +150,16 @@ static int	conv_sel(va_list ap, char cs)
 		count += ft_putchar_fd('%', 1);
 	if (cs == 'c')
 		count += ft_putchar_fd(va_arg(ap, int), 1);
-	// if (cs == 's')
-	// 	count += ft_putstr_fd(va_arg(ap, char *), 1);
-	// if (cs == 'd' || cs == 'i')
-	// 	count += ft_putnbr_fd(va_arg(ap, int), 1);
-	// if (cs == 'p')
-	// 	count += ft_putptr_fd(va_arg(ap, ??), 1);
-	// if (cs == 'u')
-	// 	count += ft_putunbr_fd(va_arg(ap, unsigned int), 1);
-	// if (cs == 'x')
-	// 	count += ??
-	// if (cs == 'X')
-	// 	count += ??
+	if (cs == 's')
+		count += ft_putstr_fd(va_arg(ap, char *), 1);
+	if (cs == 'd' || cs == 'i')
+		count += ft_putnbr_fd(va_arg(ap, int), 1);
+	if (cs == 'p')
+		count += ft_putptr_fd(va_arg(ap, uintptr_t), 1);
+	if (cs == 'u')
+		count += ft_putunbr_fd(va_arg(ap, unsigned int), 1);
+	if (cs == 'x' || cs == 'X')
+		count += ft_putuhexnbr_fd(va_arg(ap, int), 1, cs);
 	return (count);
 }
 
@@ -190,22 +315,24 @@ Format:
 ---------------------------------------------------------------------------- */
 int	ft_printf(const char *str, ...)
 {
-	int		count;
+	int	count;
 	va_list	ap;
 
 	count = 0;
 	va_start(ap, str);
+	if (str == NULL)
+		return (-1);
 	while (*str)
 	{
-		if (*str == '%' && *str++)
+		if (*str == '%')
 		{
-			//str++;
-			count += conv_sel(ap, *str);
+			if (!(*(str + 1)))
+				return (-1);
+			count += conv_sel(ap, *(str + 1));
+			str++;
 		}
 		else
-		{
 			count += ft_putchar_fd(*str, 1);
-		}
 		str++;
 	}
 	va_end(ap);
@@ -213,14 +340,23 @@ int	ft_printf(const char *str, ...)
 }
 
 //---------
-int	main(void)
-{
-	int		count1;
-	int		count2;
-	char	*s = "iker";
+// int	main(void)
+// {
+// 	int		count1;
+// 	int		count2;
+// 	// char	*s = "iker";
+// 	// char	*n = NULL;
 
-	printf("%cs%cs%c\n", 'a', 'b', 'a');
-	ft_printf("%cs%cs%c\n", 'a', 'b', 'a');
+// 	// count1 = printf("%cs%cs%c%s%i%s%p%p%s%u%x%X\n", 'c', 'b', 'a', "iker", 123, s, s, n, n, 123, 123, 123);
+// 	// count2 = ft_printf("%cs%cs%c%s%i%s%p%p%s%u%x%X\n", 'c', 'b', 'a', "iker", 123, s, s, n, n, 123, 123, 123);
 
-	return (0);
-}
+// 	// count1 = printf("%cs%cs%c%s%s%d%p\n", 'c', 'b', 'a', "iker", s, 123, s);
+// 	// count2 = ft_printf("%cs%cs%c%s%s%d%p\n", 'c', 'b', 'a', "iker", s, 123, s);
+
+// 	count1 = printf("%x\n", -10);
+// 	count2 = ft_printf("%x\n", -10);
+
+// 	printf(" c_printf = %d\nft_printf = %d\n", count1, count2);
+
+// 	return (0);
+// }
