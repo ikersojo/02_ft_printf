@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 11:54:28 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/20 17:46:53 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/09/20 22:37:50 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,27 @@ static int	conv_sel(va_list ap, char cs)
 	if (cs == 'x' || cs == 'X')
 		count += ft_putuhexnbr_fd(va_arg(ap, int), 1, cs);
 	return (count);
+}
+
+int	ft_isprint(int c)
+{
+	if ((c >= 32 && c <= 126) || (c >= 1 && c <= 13))
+		return (1);
+	return (0);
+}
+
+int	ft_ischarset(char c, const char *set)
+{
+	size_t	i;
+
+	i = 0;
+	while (*(set + i))
+	{
+		if (*(set + i) == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 /* DESCRIPTION:
@@ -326,13 +347,15 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			if (!(*(str + 1)))
+			if (!(*(str + 1)) || !ft_ischarset(*(str + 1), "%csdiupxX")) 
 				return (-1);
 			count += conv_sel(ap, *(str + 1));
 			str++;
 		}
+		else if (ft_isprint(*str))
+			count += ft_putchar_fd(*str, 1); 
 		else
-			count += ft_putchar_fd(*str, 1);
+			return (-1);
 		str++;
 	}
 	va_end(ap);
@@ -358,5 +381,14 @@ int	ft_printf(const char *str, ...)
 
 // 	printf(" c_printf = %d\nft_printf = %d\n", count1, count2);
 
+// 	return (0);
+// // }
+
+// int main(void)
+// {
+// 	int i = -129;
+// 	// while (++i <= 127)
+// 	// 	printf("%d: %c\n", i, i);
+// 	printf("%d %d %d %d %d %d %d %d ", '\x01', '\x02', '\x03', '\x04', '\x05', '\x06', '\x07', '\x08');
 // 	return (0);
 // }
