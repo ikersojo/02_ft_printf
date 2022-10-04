@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 11:54:28 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/22 10:13:31 by isojo-go         ###   ########.fr       */
+/*   Created: 2022/09/22 07:49:09 by isojo-go          #+#    #+#             */
+/*   Updated: 2022/10/04 09:53:48 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./libft/inc/libft.h"
 #include "ft_printf.h"
+
+static int	ft_putptr_fd(uintptr_t n, int fd)
+{
+	int	i;
+
+	i = 0;
+	i += ft_putstr_fd("0x", fd);
+	if (n == 0)
+		i += ft_putchar_fd('0', fd);
+	else
+		i += ft_putuhexlongnbr_fd(n, fd, 'x');
+	return (i);
+}
 
 //conversion specifier "cs"
 static int	conv_sel(va_list ap, char cs)
@@ -38,7 +52,7 @@ static int	conv_sel(va_list ap, char cs)
 /* DESCRIPTION:
 The printf utility exits 0 on success, and >0 if an error occurs.
 The printf utility formats and prints its arguments, after the first, under
-control of the format defined by the conversion specfier cs.
+control of the format specified by cs (conversion specifier).
 ---------------------------------------------------------------------------- */
 int	ft_printf(const char *str, ...)
 {
