@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 The memccpy() function copies bytes from string "src" to string "dst".

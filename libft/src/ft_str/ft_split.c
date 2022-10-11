@@ -6,11 +6,11 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:25:14 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/22 08:57:04 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:20:30 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 static char	**ft_free_array(char **array)
 {

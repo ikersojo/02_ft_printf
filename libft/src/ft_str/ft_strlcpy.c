@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 The strlcpy() function copies the src string to the dest string and then adds

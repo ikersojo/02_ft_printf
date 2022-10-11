@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 The atoi() function converts the initial portion of the string pointed by str

@@ -6,11 +6,11 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:20:53 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/22 08:57:04 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:22:11 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 static char	*min_int_str(void)
 {

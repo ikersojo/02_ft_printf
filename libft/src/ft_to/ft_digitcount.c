@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 07:25:59 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/22 08:57:04 by isojo-go         ###   ########.fr       */
+/*   Created: 2022/10/11 21:39:27 by isojo-go          #+#    #+#             */
+/*   Updated: 2022/10/11 21:44:53 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 The function returns the number of digits in an unsigned long in a given

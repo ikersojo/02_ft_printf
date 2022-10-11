@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+         #
+#    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 15:28:36 by isojo-go          #+#    #+#              #
-#    Updated: 2022/10/04 11:00:28 by isojo-go         ###   ########.fr        #
+#    Updated: 2022/10/11 21:41:16 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,17 +34,16 @@ SRC_FILES	=	ft_is/ft_isalnum.c ft_is/ft_isalpha.c ft_is/ft_isascii.c \
 				ft_mem/ft_bzero.c ft_mem/ft_calloc.c ft_mem/ft_memccpy.c \
 				ft_mem/ft_memchr.c ft_mem/ft_memcmp.c ft_mem/ft_memcpy.c \
 				ft_mem/ft_memmove.c ft_mem/ft_memset.c \
-				ft_put/ft_putchar_fd.c ft_put/ft_putendl_fd.c \
+				ft_put/ft_putchar_fd.c ft_put/ft_putunbr_fd.c \
 				ft_put/ft_putnbr_fd.c ft_put/ft_putstr_fd.c \
-				ft_put/ft_digitcount.c ft_put/ft_putunbr_fd.c \
-				ft_put/ft_putuhexnbr_fd.c ft_put/ft_putuhexlongnbr_fd.c \
+				ft_put/ft_putuhexnbr_fd.c \
 				ft_str/ft_split.c ft_str/ft_strchr.c ft_str/ft_strdup.c \
 				ft_str/ft_striteri.c ft_str/ft_strjoin.c ft_str/ft_strlcat.c \
 				ft_str/ft_strlcpy.c ft_str/ft_strlen.c ft_str/ft_strmapi.c \
 				ft_str/ft_strncmp.c ft_str/ft_strnstr.c ft_str/ft_strrchr.c \
 				ft_str/ft_strtrim.c ft_str/ft_substr.c \
 				ft_to/ft_abs.c ft_to/ft_atoi.c ft_to/ft_itoa.c \
-				ft_to/ft_toupper.c ft_to/ft_tolower.c \
+				ft_to/ft_toupper.c ft_to/ft_tolower.c ft_to/ft_digitcount.c\
 
 SRC	=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ	=	$(SRC:.c=.o)

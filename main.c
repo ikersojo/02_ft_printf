@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:57:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/10/11 18:07:04 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/10/11 19:56:30 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 int	main(void)
 {
 	int	num;
-	int i;
+	int	i;
 	int	j;
 
 	num = 2147483647;
-	
 	i = printf(" c_printf: %d\n", num);
 	j = ft_printf("ft_printf: %d\n", num);
 	printf(" c: %d\nft: %d\n", i, j);

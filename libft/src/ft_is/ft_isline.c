@@ -6,11 +6,11 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 11:07:35 by isojo-go          #+#    #+#             */
-/*   Updated: 2022/09/22 11:12:29 by isojo-go         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:22:11 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 The function tests for a new line character in a string. The function returns

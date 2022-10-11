@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 Outputs the char c to the file descriptor fd.
@@ -18,5 +18,6 @@ The function returns the number of characters printed and -1 if fails to print.
 ---------------------------------------------------------------------------- */
 int	ft_putchar_fd(int c, int fd)
 {
-	return (write(fd, &c, 1));
+	write(fd, &c, 1);
+	return (1);
 }

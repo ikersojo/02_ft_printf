@@ -10,27 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 /* DESCRIPTION:
 Outputs the string s to the file descriptor fd.
 The function returns the number of characters printed and -1 if fails to print.
 ---------------------------------------------------------------------------- */
-int	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *str, int fd)
 {
-	int	i;
-	int	temp;
+	int	count;
 
-	i = 0;
-	temp = 0;
-	if (s == NULL)
+	count = 0;
+	if (!str)
 		return (write(fd, "(null)", 6));
-	while (*s)
+	while (*str)
 	{
-		temp = ft_putchar_fd(*s++, fd);
-		if (temp == -1)
-			return (-1);
-		i += temp;
+		count += ft_putchar_fd(*str, fd);
+		str++;
 	}
-	return (i);
+	return (count);
 }
